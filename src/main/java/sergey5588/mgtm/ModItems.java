@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import sergey5588.mgtm.custom.items.MidasTouch;
 
 import java.util.function.Function;
 
@@ -30,7 +31,12 @@ public class ModItems {
 
         return item;
     }
-    public static final Item MIDAS_TOUCH = register("midas_touch", Item::new, new Item.Settings().maxCount(1).rarity(Rarity.EPIC));
+    public static final Item MIDAS_TOUCH = register("midas_touch", MidasTouch::new, new Item.Settings()
+            .maxCount(1)
+            .rarity(Rarity.EPIC)
+            .dama
+            .maxDamage(3)
+    );
 
     public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(MyGoldenToolsMod.MOD_ID, "mgtm"));
     public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
@@ -38,22 +44,6 @@ public class ModItems {
             .displayName(Text.translatable("itemGroup.mgtm"))
             .build();
     public static void initialize() {
-        Item[] golden_tools = {
-                Items.GOLDEN_PICKAXE,
-                Items.GOLDEN_AXE,
-                Items.GOLDEN_BOOTS,
-                Items.GOLDEN_CHESTPLATE,
-                Items.GOLDEN_HELMET,
-                Items.GOLDEN_HOE,
-                Items.GOLDEN_HORSE_ARMOR,
-                Items.GOLDEN_LEGGINGS,
-                Items.GOLDEN_SHOVEL,
-                Items.GOLDEN_SWORD
-        };
-
-
-
-
 
 
         Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);

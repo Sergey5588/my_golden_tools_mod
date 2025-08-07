@@ -9,6 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.Team;
+import net.minecraft.server.command.TeamCommand;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -28,14 +31,8 @@ public class MyGoldenToolsMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItems.initialize();
-		ServerTickEvents.END_SERVER_TICK.register(( server) -> {
-			for(ServerPlayerEntity player: server.getPlayerManager().getPlayerList()) {
 
-				if(player.getInventory().contains(ModItems.MIDAS_TOUCH.getDefaultStack()) && !player.getWorld().getBlockState(player.getBlockPos().add(0,-1,0)).isAir()) {
-					player.getWorld().setBlockState(player.getBlockPos().add(0,-1,0), Blocks.GOLD_BLOCK.getDefaultState());
-				}
-			}
-		} );
+		ModItems.initialize();
+
 	}
 }
