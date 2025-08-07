@@ -34,7 +34,7 @@ public class ModItems {
     public static final Item MIDAS_TOUCH = register("midas_touch", MidasTouch::new, new Item.Settings()
             .maxCount(1)
             .rarity(Rarity.EPIC)
-            .dama
+
             .maxDamage(3)
     );
 
