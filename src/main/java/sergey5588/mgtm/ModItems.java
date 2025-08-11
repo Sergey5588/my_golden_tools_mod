@@ -34,8 +34,7 @@ public class ModItems {
     public static final Item MIDAS_TOUCH = register("midas_touch", MidasTouch::new, new Item.Settings()
             .maxCount(1)
             .rarity(Rarity.EPIC)
-
-            .maxDamage(3)
+            .maxDamage(16)
     );
 
     public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(MyGoldenToolsMod.MOD_ID, "mgtm"));

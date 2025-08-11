@@ -2,43 +2,39 @@ package sergey5588.mgtm.custom.items;
 
 
 
-import net.fabricmc.fabric.api.item.v1.CustomDamageHandler;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.world.World;
+import sergey5588.mgtm.MyGoldenToolsMod;
 
 public class MidasTouch extends Item {
-
+    public static final int COOLDOWN = 100;
     public MidasTouch(Settings settings) {
         super(settings);
     }
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        if(user.getItemCooldownManager().isCoolingDown(stack)) return ActionResult.FAIL;
+
+        entity.addStatusEffect(new StatusEffectInstance(MyGoldenToolsMod.STATUE, 50, 255, false, false, true ), entity);
 
 
-        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 255, false, false, false ), entity);
-        if(stack.isDamageable()) {
-
+        stack.setDamage(stack.getDamage()+1);
             
-            if(stack.shouldBreak()) {
-                stack.decrement(0);
-                user.playSound(SoundEvents.BLOCK_IRON_PLACE, 0.5f,1.0f);
-            }
+        if(stack.shouldBreak()) {
+            user.playSound(SoundEvents.BLOCK_ANVIL_BREAK, 0.5f,1.0f);
+            user.setStackInHand(hand, ItemStack.EMPTY);
         }
+        user.getItemCooldownManager().set(stack, COOLDOWN);
         return ActionResult.SUCCESS;
     }
 
@@ -47,10 +43,19 @@ public class MidasTouch extends Item {
         if(ctx.getWorld().getBlockState(ctx.getBlockPos()).isOf(Blocks.GOLD_BLOCK)) {
             return  ActionResult.FAIL;
         }
-        ctx.getWorld().setBlockState(ctx.getBlockPos(), Blocks.GOLD_BLOCK.getDefaultState());
         if(ctx.getPlayer() !=null) {
+            if(ctx.getPlayer().getItemCooldownManager().isCoolingDown(ctx.getStack()))
+                return ActionResult.FAIL;
+            ctx.getWorld().setBlockState(ctx.getBlockPos(), Blocks.GOLD_BLOCK.getDefaultState());
 
             ctx.getPlayer().playSound(SoundEvents.BLOCK_IRON_PLACE, 0.5f, 1.0f);
+            ctx.getStack().setDamage(ctx.getStack().getDamage()+1);
+            if(ctx.getStack().shouldBreak()) {
+
+                ctx.getPlayer().playSound(SoundEvents.BLOCK_ANVIL_BREAK, 0.5f,1.0f);
+                ctx.getPlayer().setStackInHand(ctx.getHand(), ItemStack.EMPTY);
+            }
+            ctx.getPlayer().getItemCooldownManager().set(ctx.getStack(), COOLDOWN);
         }
         return ActionResult.SUCCESS;
     }
