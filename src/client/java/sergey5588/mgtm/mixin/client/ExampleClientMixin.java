@@ -17,16 +17,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import sergey5588.mgtm.MyGoldenToolsMod;
 
-@Mixin(EntityCollisionHandler.class)
+@Mixin(Entity.class)
 public abstract class ExampleClientMixin {
-//	@Shadow
-//	public abstract boolean isLiving();
-//
-//	@Inject(at = @At("HEAD"), method = "isCollidable", cancellable = true)
-//	private void isCollidable(@Nullable Entity entity, CallbackInfoReturnable<Boolean> cir) {
-//		if((((Entity)(Object)this).isLiving() && ((LivingEntity)(Entity)(Object)this).hasStatusEffect(MyGoldenToolsMod.STATUE))) {
-//			((Entity)(Object)this).getWorld().getPlayers().getFirst().sendMessage(Text.of("FUCK"), false);
-//			cir.setReturnValue(false);
-//		}
-//	}
+
+
+	@Inject(at = @At("HEAD"), method = "isCollidable", cancellable = true)
+	private void isCollidable(@Nullable Entity entity, CallbackInfoReturnable<Boolean> cir) {
+
+	}
 }

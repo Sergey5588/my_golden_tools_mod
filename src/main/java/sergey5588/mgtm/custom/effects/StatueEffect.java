@@ -46,7 +46,7 @@ public class StatueEffect extends StatusEffect {
     // Called when the effect is applied.
     @Override
     public boolean applyUpdateEffect(ServerWorld world, LivingEntity entity, int amplifier) {
-
+        entity.isPushable();
         return super.applyUpdateEffect(world, entity, amplifier);
     }
 
