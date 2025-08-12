@@ -2,12 +2,17 @@ package sergey5588.mgtm;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.player.BlockBreakingInfo;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -23,6 +28,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.GameMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sergey5588.mgtm.custom.effects.StatueEffect;
@@ -49,5 +56,13 @@ public class MyGoldenToolsMod implements ModInitializer {
 
 		ModItems.initialize();
 
+		PlayerBlockBreakEvents.AFTER.register((world, playerEntity,blockPos,blockState,blockEntity)-> {
+			if(playerEntity.getMainHandStack().isOf(Items.GOLDEN_PICKAXE) && (blockState.isOf(Blocks.GOLD_ORE) || blockState.isOf(Blocks.DEEPSLATE_GOLD_ORE)) && (playerEntity.getGameMode() != GameMode.CREATIVE)) {
+				//playerEntity.dropItem(ModItems.MAGIC_SHARD.getDefaultStack(), true);
+				world.spawnEntity(new ItemEntity(world, blockPos.getX()+0.5, blockPos.getY()+0.5, blockPos.getZ()+0.5, ModItems.MAGIC_SHARD.getDefaultStack()));
+				world.spawnEntity(new ItemEntity(world, blockPos.getX()+0.5, blockPos.getY()+0.5, blockPos.getZ()+0.5, Items.GOLD_NUGGET.getDefaultStack().copyWithCount(Random.create().nextBetween(3,5))));
+
+			}
+		});
 	}
 }
