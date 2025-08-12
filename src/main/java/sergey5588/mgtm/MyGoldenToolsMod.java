@@ -59,7 +59,8 @@ public class MyGoldenToolsMod implements ModInitializer {
 		PlayerBlockBreakEvents.AFTER.register((world, playerEntity,blockPos,blockState,blockEntity)-> {
 			if(playerEntity.getMainHandStack().isOf(Items.GOLDEN_PICKAXE) && (blockState.isOf(Blocks.GOLD_ORE) || blockState.isOf(Blocks.DEEPSLATE_GOLD_ORE)) && (playerEntity.getGameMode() != GameMode.CREATIVE)) {
 				//playerEntity.dropItem(ModItems.MAGIC_SHARD.getDefaultStack(), true);
-				world.spawnEntity(new ItemEntity(world, blockPos.getX()+0.5, blockPos.getY()+0.5, blockPos.getZ()+0.5, ModItems.MAGIC_SHARD.getDefaultStack()));
+				if(Random.create().nextBetween(0, 10) == 0)
+					world.spawnEntity(new ItemEntity(world, blockPos.getX()+0.5, blockPos.getY()+0.5, blockPos.getZ()+0.5, ModItems.MAGIC_SHARD.getDefaultStack()));
 				world.spawnEntity(new ItemEntity(world, blockPos.getX()+0.5, blockPos.getY()+0.5, blockPos.getZ()+0.5, Items.GOLD_NUGGET.getDefaultStack().copyWithCount(Random.create().nextBetween(3,5))));
 
 			}
