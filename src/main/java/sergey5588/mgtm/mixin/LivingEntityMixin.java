@@ -15,7 +15,6 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "isPushable", cancellable = true)
 	private void isPushable(CallbackInfoReturnable<Boolean> cir) {
         if((((LivingEntity)(Object)this).hasStatusEffect(MyGoldenToolsMod.STATUE))) {
-            ((LivingEntity)(Object)this).getWorld().getPlayers().getFirst().sendMessage(Text.of("FUCK"), false);
             cir.setReturnValue(false);
         }
     }

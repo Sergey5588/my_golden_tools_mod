@@ -17,19 +17,19 @@ import sergey5588.mgtm.MyGoldenToolsMod;
 
 public class MidasTouch extends Item {
     public static final int COOLDOWN = 100;
+    public static final int DURATION = 50;
     public MidasTouch(Settings settings) {
         super(settings);
     }
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        if(user.getItemCooldownManager().isCoolingDown(stack)) return ActionResult.FAIL;
-
-        entity.addStatusEffect(new StatusEffectInstance(MyGoldenToolsMod.STATUE, 50, 255, false, false, true ), entity);
-
+        if(user.getItemCooldownManager().isCoolingDown(stack))
+            return ActionResult.FAIL;
 
         stack.setDamage(stack.getDamage()+1);
-            
+        user.getStackInHand(hand).setDamage(user.getStackInHand(hand).getDamage()+1);
+        entity.addStatusEffect(new StatusEffectInstance(MyGoldenToolsMod.STATUE, DURATION, 255, false, false, true ), entity);
         if(stack.shouldBreak()) {
             user.playSound(SoundEvents.BLOCK_ANVIL_BREAK, 0.5f,1.0f);
             user.setStackInHand(hand, ItemStack.EMPTY);
@@ -40,7 +40,7 @@ public class MidasTouch extends Item {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext ctx) {
-        if(ctx.getWorld().getBlockState(ctx.getBlockPos()).isOf(Blocks.GOLD_BLOCK)) {
+        if(ctx.getWorld().getBlockState(ctx.getBlockPos()).isOf(Blocks.GOLD_BLOCK) || ctx.getWorld().getBlockState(ctx.getBlockPos()).isOf(Blocks.BEDROCK)) {
             return  ActionResult.FAIL;
         }
         if(ctx.getPlayer() !=null) {

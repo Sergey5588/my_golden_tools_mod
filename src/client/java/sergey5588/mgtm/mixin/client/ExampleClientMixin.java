@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityCollisionHandler;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.text.Text;
 import net.minecraft.world.entity.ClientEntityManager;
+import net.minecraft.world.level.storage.LevelSummary;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -17,12 +18,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import sergey5588.mgtm.MyGoldenToolsMod;
 
-@Mixin(Entity.class)
+@Mixin(LevelSummary.class)
 public abstract class ExampleClientMixin {
 
 
-	@Inject(at = @At("HEAD"), method = "isCollidable", cancellable = true)
-	private void isCollidable(@Nullable Entity entity, CallbackInfoReturnable<Boolean> cir) {
-
-	}
+//	@Inject(at = @At("HEAD"), method = "isExperimental", cancellable = true)
+//	private void isCollidable(CallbackInfoReturnable<Boolean> cir) {
+//		cir.setReturnValue(false);
+//	}
 }

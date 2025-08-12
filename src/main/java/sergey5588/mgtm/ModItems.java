@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import sergey5588.mgtm.custom.items.MagicShard;
 import sergey5588.mgtm.custom.items.MidasTouch;
 
 import java.util.function.Function;
@@ -36,6 +37,11 @@ public class ModItems {
             .rarity(Rarity.EPIC)
             .maxDamage(16)
     );
+    public static final Item MAGIC_SHARD = register("magic_shard", MagicShard::new, new Item.Settings()
+            .maxCount(64)
+            .rarity(Rarity.EPIC)
+            .recipeRemainder(MIDAS_TOUCH)
+    );
 
     public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(MyGoldenToolsMod.MOD_ID, "mgtm"));
     public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
@@ -47,6 +53,9 @@ public class ModItems {
 
         Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY)
-                .register((itemGroup) -> itemGroup.add(ModItems.MIDAS_TOUCH));
+                .register((itemGroup) -> {
+                    itemGroup.add(ModItems.MIDAS_TOUCH);
+                    itemGroup.add(ModItems.MAGIC_SHARD);
+                });
     }
 }

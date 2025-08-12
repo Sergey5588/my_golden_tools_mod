@@ -40,7 +40,7 @@ public class MyGoldenToolsMod implements ModInitializer {
 			Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(MyGoldenToolsMod.MOD_ID, "statue"), new StatueEffect()
 					.addAttributeModifier(EntityAttributes.MOVEMENT_SPEED, Identifier.of(MOD_ID, "statue_a"), -1, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
 					.addAttributeModifier(EntityAttributes.JUMP_STRENGTH, Identifier.of(MOD_ID, "statue_a"), -1, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
-					.addAttributeModifier(EntityAttributes.KNOCKBACK_RESISTANCE, Identifier.of(MOD_ID, "statue_a"), 999999999, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+					.addAttributeModifier(EntityAttributes.KNOCKBACK_RESISTANCE, Identifier.of(MOD_ID, "statue_a"), 999999999, EntityAttributeModifier.Operation.ADD_VALUE)
 
 			);
 
