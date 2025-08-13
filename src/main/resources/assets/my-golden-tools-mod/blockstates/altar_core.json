@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "my-golden-tools-mod:block/altar_core" }
+  }
+}

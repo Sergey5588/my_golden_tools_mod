@@ -56,6 +56,7 @@ public class ModItems {
                 .register((itemGroup) -> {
                     itemGroup.add(ModItems.MIDAS_TOUCH);
                     itemGroup.add(ModItems.MAGIC_SHARD);
+                    itemGroup.add(ModBlocks.ALTAR_CORE);
                 });
     }
 }

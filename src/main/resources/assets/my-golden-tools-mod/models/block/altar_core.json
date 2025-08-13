@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "my-golden-tools-mod:block/altar_core"
+  }
+}

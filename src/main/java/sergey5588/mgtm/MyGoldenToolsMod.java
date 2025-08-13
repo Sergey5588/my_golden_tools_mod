@@ -55,7 +55,7 @@ public class MyGoldenToolsMod implements ModInitializer {
 	public void onInitialize() {
 
 		ModItems.initialize();
-
+		ModBlocks.initialize();
 		PlayerBlockBreakEvents.AFTER.register((world, playerEntity,blockPos,blockState,blockEntity)-> {
 			if(playerEntity.getMainHandStack().isOf(Items.GOLDEN_PICKAXE) && (blockState.isOf(Blocks.GOLD_ORE) || blockState.isOf(Blocks.DEEPSLATE_GOLD_ORE)) && (playerEntity.getGameMode() != GameMode.CREATIVE)) {
 				//playerEntity.dropItem(ModItems.MAGIC_SHARD.getDefaultStack(), true);

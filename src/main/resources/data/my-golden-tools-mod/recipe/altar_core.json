@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#G#",
+    "GDG",
+    "#G#"
+  ],
+  "key": {
+    "#": "minecraft:lapis_lazuli",
+    "G": "minecraft:gold_block",
+    "D": "my-golden-tools:magic_shard"
+  },
+  "result": {
+    "id": "my-golden-tools-mod:altar_core",
+    "count": 1
+  }
+}
