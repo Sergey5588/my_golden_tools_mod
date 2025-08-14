@@ -40,7 +40,6 @@ public class ModItems {
     public static final Item MAGIC_SHARD = register("magic_shard", MagicShard::new, new Item.Settings()
             .maxCount(64)
             .rarity(Rarity.EPIC)
-            .recipeRemainder(MIDAS_TOUCH)
     );
 
     public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(MyGoldenToolsMod.MOD_ID, "mgtm"));

@@ -1,14 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "pattern": [
-    "#G#",
-    "GDG",
-    "#G#"
+    "CAC",
+    "ABA",
+    "CAC"
   ],
   "key": {
-    "#": "minecraft:lapis_lazuli",
-    "G": "minecraft:gold_block",
-    "D": "my-golden-tools:magic_shard"
+    "A": [
+      "gold_block"
+    ],
+    "B": [
+      "my-golden-tools-mod:magic_shard"
+    ],
+    "C": [
+      "minecraft:lapis_lazuli"
+    ]
   },
   "result": {
     "id": "my-golden-tools-mod:altar_core",
