@@ -24,13 +24,34 @@ public class AltarCrafting {
             Items.GOLDEN_SHOVEL,
             Items.GOLDEN_SWORD
     };
-
+    private static final Item[][] INGREDIENTS = {
+        {Items.LAPIS_LAZULI, Items.DIAMOND, Items.EMERALD}
+    };
+    private static final Item[] RESULTS = {
+      Items.BLAZE_ROD
+    };
     public static void process_crafting(DefaultedList<ItemStack> inventory) {
 
         if(Arrays.stream(GOLDEN_TOOLS).toList().contains(inventory.getFirst().getItem())) {
             inventory.getFirst().setDamage(0);
             return;
         }
+
+        for(int i = 0; i < INGREDIENTS.length; ++i) {
+            Item[] ing = INGREDIENTS[i];
+            if(Arrays.stream(ing).toList().contains(inventory.get(1).getItem())){
+                if(Arrays.stream(ing).toList().contains(inventory.get(2).getItem())) {
+                    if(Arrays.stream(ing).toList().contains(inventory.get(3).getItem())) {
+                        inventory.clear();
+                        inventory.set(0, RESULTS[i].getDefaultStack());
+                        return;
+
+                    }
+                }
+            }
+        }
+
+
 
     }
     public static void initialize() {

@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.BeaconScreenHandler;
+import net.minecraft.screen.EnchantmentScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
@@ -26,10 +27,26 @@ public class AltarCoreScreenHandler extends ScreenHandler {
         super(ModScreenHandlers.ALTAR_CORE_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity );
         this.bEntity = blockEntity;
-        this.addSlot(new Slot(inventory, 0, 80, 35 ));
-        this.addSlot(new Slot(inventory, 1, 80, 10 ));
-        this.addSlot(new Slot(inventory, 2, 44, 35 ));
-        this.addSlot(new Slot(inventory, 3, 116, 35 ));
+        this.addSlot(new Slot(inventory, 0, 80, 35 ) {
+            public int getMaxItemCount() {
+                return 1;
+            }
+        });
+        this.addSlot(new Slot(inventory, 1, 80, 10 ) {
+            public int getMaxItemCount() {
+                return 1;
+            }
+        });
+        this.addSlot(new Slot(inventory, 2, 44, 35 ) {
+            public int getMaxItemCount() {
+                return 1;
+            }
+        });
+        this.addSlot(new Slot(inventory, 3, 116, 35 ) {
+            public int getMaxItemCount() {
+                return 1;
+            }
+        });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
