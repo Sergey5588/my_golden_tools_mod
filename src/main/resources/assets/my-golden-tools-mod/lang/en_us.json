@@ -2,5 +2,6 @@
   "item.my-golden-tools-mod.midas_touch": "Midas' touch",
   "item.my-golden-tools-mod.magic_shard": "Magic shard",
   "block.my-golden-tools-mod.altar_core": "Altar core",
-  "itemGroup.mgtm": "My golden tools mod"
+  "itemGroup.mgtm": "My golden tools mod",
+  "gui.my-golden-tools-mod.invalid_multiblock": "Some blocks are missing in this multiblock structure"
 }
