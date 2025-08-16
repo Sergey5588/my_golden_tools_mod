@@ -6,9 +6,14 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
@@ -27,12 +32,17 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.GameMode;
+import org.joml.Vector3i;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sergey5588.mgtm.custom.blockEntities.AltarCoreBlockEntity;
+import sergey5588.mgtm.custom.blocks.AltarCore;
 import sergey5588.mgtm.custom.effects.StatueEffect;
+import sergey5588.mgtm.utils.AltarCoreCraftC2SPayload;
 
 import java.util.function.Function;
 
@@ -58,6 +68,8 @@ public class MyGoldenToolsMod implements ModInitializer {
 		ModBlocks.initialize();
 		ModBlockEntityTypes.initialize();
 		ModScreenHandlers.initialize();
+		PayloadTypeRegistry.playC2S().register(AltarCoreCraftC2SPayload.ID, AltarCoreCraftC2SPayload.CODEC);
+		AltarCrafting.initialize();
 
 		PlayerBlockBreakEvents.AFTER.register((world, playerEntity,blockPos,blockState,blockEntity)-> {
 			if(playerEntity.getMainHandStack().isOf(Items.GOLDEN_PICKAXE) && (blockState.isOf(Blocks.GOLD_ORE) || blockState.isOf(Blocks.DEEPSLATE_GOLD_ORE)) && (playerEntity.getGameMode() != GameMode.CREATIVE)) {
@@ -68,5 +80,7 @@ public class MyGoldenToolsMod implements ModInitializer {
 
 			}
 		});
+
+
 	}
 }

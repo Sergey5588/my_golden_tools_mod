@@ -15,7 +15,7 @@ import sergey5588.mgtm.ModScreenHandlers;
 
 public class AltarCoreScreenHandler extends ScreenHandler {
     private final Inventory inventory;
-
+    public final BlockEntity bEntity;
     public AltarCoreScreenHandler(int syncId, PlayerInventory playerInventory, BlockPos pos) {
         this(syncId,playerInventory, playerInventory.player.getWorld().getBlockEntity(pos));
     }
@@ -25,7 +25,7 @@ public class AltarCoreScreenHandler extends ScreenHandler {
     public AltarCoreScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity) {
         super(ModScreenHandlers.ALTAR_CORE_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity );
-
+        this.bEntity = blockEntity;
         this.addSlot(new Slot(inventory, 0, 80, 35 ));
         this.addSlot(new Slot(inventory, 1, 80, 10 ));
         this.addSlot(new Slot(inventory, 2, 44, 35 ));

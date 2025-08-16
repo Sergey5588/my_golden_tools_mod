@@ -3,6 +3,7 @@ package sergey5588.mgtm;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.textures.GpuTextureView;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -14,9 +15,15 @@ import net.minecraft.client.gui.widget.GridWidget;
 import net.minecraft.client.gui.widget.LayoutWidget;
 import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
+import net.minecraft.server.command.GiveCommand;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import org.joml.Vector3f;
 import sergey5588.mgtm.custom.screens.AltarCoreScreenHandler;
+import sergey5588.mgtm.utils.AltarCoreCraftC2SPayload;
 
 public class AltarCoreScreen extends HandledScreen<AltarCoreScreenHandler> {
     private ButtonWidget craftButton;
@@ -30,7 +37,10 @@ public class AltarCoreScreen extends HandledScreen<AltarCoreScreenHandler> {
         this.addTooltipSubmenuHandler(new BundleTooltipSubmenuHandler(this.client));
 
         this.craftButton = ButtonWidget.builder(Text.of("Magic"), (btn)->{
-            //TODO
+            BlockPos pos = this.getScreenHandler().bEntity.getPos();
+            AltarCoreCraftC2SPayload payload = new AltarCoreCraftC2SPayload(new Vector3f(pos.getX(), pos.getY(), pos.getZ()));
+            ClientPlayNetworking.send(payload);
+
 
         }).size(54,16).position(this.x+61,this.y + 57).build();
         this.addDrawableChild(craftButton);
