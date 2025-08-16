@@ -5,18 +5,35 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.textures.GpuTextureView;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.ingame.CraftingScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.tooltip.BundleTooltipSubmenuHandler;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.gui.widget.GridWidget;
+import net.minecraft.client.gui.widget.LayoutWidget;
+import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import sergey5588.mgtm.custom.screens.AltarCoreScreenHandler;
 
 public class AltarCoreScreen extends HandledScreen<AltarCoreScreenHandler> {
-
+    private ButtonWidget craftButton;
     public static final Identifier GUI_TEXTURE = Identifier.of(MyGoldenToolsMod.MOD_ID, "textures/gui/altar_core/altar_core.png");
     public AltarCoreScreen(AltarCoreScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+    }
+    public void init() {
+        this.x = (this.width - this.backgroundWidth) / 2;
+        this.y = (this.height - this.backgroundHeight) / 2;
+        this.addTooltipSubmenuHandler(new BundleTooltipSubmenuHandler(this.client));
+
+        this.craftButton = ButtonWidget.builder(Text.of("Magic"), (btn)->{
+            //TODO
+
+        }).size(54,16).position(this.x+61,this.y + 57).build();
+        this.addDrawableChild(craftButton);
     }
 
     @Override

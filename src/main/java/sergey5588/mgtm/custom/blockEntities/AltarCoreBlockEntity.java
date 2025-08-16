@@ -26,7 +26,7 @@ import sergey5588.mgtm.custom.screens.AltarCoreScreenHandler;
 import sergey5588.mgtm.utils.ImplementedInventory;
 
 public class AltarCoreBlockEntity extends BlockEntity implements ImplementedInventory,ExtendedScreenHandlerFactory<BlockPos> {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
 
     public AltarCoreBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.ALTAR_CORE, pos, state);
