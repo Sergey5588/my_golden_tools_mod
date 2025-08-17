@@ -29,22 +29,22 @@ public class AltarCoreScreenHandler extends ScreenHandler {
         this.bEntity = blockEntity;
         this.addSlot(new Slot(inventory, 0, 80, 35 ) {
             public int getMaxItemCount() {
-                return 1;
+                return 64;
             }
         });
         this.addSlot(new Slot(inventory, 1, 80, 10 ) {
             public int getMaxItemCount() {
-                return 1;
+                return 64;
             }
         });
         this.addSlot(new Slot(inventory, 2, 44, 35 ) {
             public int getMaxItemCount() {
-                return 1;
+                return 64;
             }
         });
         this.addSlot(new Slot(inventory, 3, 116, 35 ) {
             public int getMaxItemCount() {
-                return 1;
+                return 64;
             }
         });
 

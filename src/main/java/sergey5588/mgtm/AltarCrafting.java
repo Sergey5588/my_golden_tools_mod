@@ -36,15 +36,26 @@ public class AltarCrafting {
             inventory.getFirst().setDamage(0);
             return;
         }
-        if(!inventory.getFirst().isOf(Items.AIR)) return;
         for(int i = 0; i < INGREDIENTS.length; ++i) {
             Item[] ing = INGREDIENTS[i];
+
+            if(!inventory.getFirst().isOf(RESULTS[i]) && !inventory.getFirst().isEmpty()) return;
             if(Arrays.stream(ing).toList().contains(inventory.get(1).getItem())){
                 if(Arrays.stream(ing).toList().contains(inventory.get(2).getItem())) {
                     if(Arrays.stream(ing).toList().contains(inventory.get(3).getItem())) {
-                        inventory.clear();
-                        inventory.set(0, RESULTS[i].getDefaultStack());
-                        return;
+                        if(inventory.get(0).getMaxCount() > inventory.get(0).getCount()) {
+
+                            inventory.get(1).decrement(1);
+                            inventory.get(2).decrement(1);
+                            inventory.get(3).decrement(1);
+                            if(inventory.get(0).isOf(RESULTS[i])) {
+                                inventory.get(0).increment(1);
+                            } else if(inventory.getFirst().isEmpty()){
+
+                                inventory.set(0, RESULTS[i].getDefaultStack());
+                            }
+                            return;
+                        }
 
                     }
                 }
