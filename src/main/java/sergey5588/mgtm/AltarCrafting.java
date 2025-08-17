@@ -25,10 +25,10 @@ public class AltarCrafting {
             Items.GOLDEN_SWORD
     };
     private static final Item[][] INGREDIENTS = {
-        {Items.LAPIS_LAZULI, Items.DIAMOND, Items.EMERALD}
+        {Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.MAGIC_SHARD}
     };
     private static final Item[] RESULTS = {
-      Items.BLAZE_ROD
+      ModItems.MIDAS_TOUCH
     };
     public static void process_crafting(DefaultedList<ItemStack> inventory) {
 
@@ -71,6 +71,8 @@ public class AltarCrafting {
             BlockPos blockPos = new BlockPos((int)payload.pos().x,(int)payload.pos().y,(int)payload.pos().z);
             if(context.player().getWorld().getBlockEntity(blockPos) instanceof AltarCoreBlockEntity blockEntity) {
                 process_crafting(blockEntity.getItems());
+            } else {
+                context.player().closeHandledScreen();
             }
         });
     }
