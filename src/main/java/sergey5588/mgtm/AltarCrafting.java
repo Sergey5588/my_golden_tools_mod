@@ -36,7 +36,7 @@ public class AltarCrafting {
             inventory.getFirst().setDamage(0);
             return;
         }
-
+        if(!inventory.getFirst().isOf(Items.AIR)) return;
         for(int i = 0; i < INGREDIENTS.length; ++i) {
             Item[] ing = INGREDIENTS[i];
             if(Arrays.stream(ing).toList().contains(inventory.get(1).getItem())){
