@@ -29,7 +29,7 @@ public class MidasTouch extends Item {
 
         stack.setDamage(stack.getDamage()+1);
         user.getStackInHand(hand).setDamage(user.getStackInHand(hand).getDamage()+1);
-        entity.addStatusEffect(new StatusEffectInstance(MyGoldenToolsMod.STATUE, DURATION, 255, false, false, true ), entity);
+        entity.addStatusEffect(new StatusEffectInstance(MyGoldenToolsMod.STATUE, DURATION, 255, false, true, true ), entity);
         if(stack.shouldBreak()) {
             user.playSound(SoundEvents.BLOCK_ANVIL_BREAK, 0.5f,1.0f);
             user.setStackInHand(hand, ItemStack.EMPTY);

@@ -7,14 +7,19 @@ import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.component.type.DamageResistantComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageSources;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.server.command.AttributeCommand;
 import net.minecraft.server.command.SpectateCommand;
 import net.minecraft.server.world.ServerWorld;
@@ -23,6 +28,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.GameModeList;
+import net.minecraft.world.World;
 import sergey5588.mgtm.MyGoldenToolsMod;
 
 import javax.management.Attribute;
@@ -55,8 +61,10 @@ public class StatueEffect extends StatusEffect {
 
     }
 
-
-
-
-
+    @Override
+    public void onEntityRemoval(ServerWorld world, LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
+        if(reason.shouldDestroy()) {
+            world.spawnEntity(new ItemEntity(world, entity.getX(), entity.getY(), entity.getZ(), Items.GOLD_INGOT.getDefaultStack()));
+        }
+    }
 }
