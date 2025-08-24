@@ -36,7 +36,7 @@ press "Magic" button to make something
 
 <img width="496" height="235" alt="image" src="https://github.com/user-attachments/assets/250db847-ece4-4034-9b67-1c2dfaa9a6e6" />
 
-- To repair damaged golden tool, but int into central slot of the altar
+- To repair damaged golden tool, put it into central slot of the altar
 
 </details>
 
