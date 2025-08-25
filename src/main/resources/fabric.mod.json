@@ -3,15 +3,14 @@
 	"id": "my-golden-tools-mod",
 	"version": "${version}",
 	"name": "My golden tools mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A mod that makes gold useful!",
 	"authors": [
-		"Me!"
+		"Sergey5588"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Sergey5588/my_golden_tools_mod/tree/master"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/my-golden-tools-mod/icon.png",
 	"environment": "*",
 	"entrypoints": {
