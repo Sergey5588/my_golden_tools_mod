@@ -1,5 +1,7 @@
 # <p align=center> Welcome to my golden tools mod! </p>
-<p align=center> Made for <a href=https://hackcraft.hackclub.com/>hackcraft</a></p>
+<p align=center>Made for <a href=https://hackcraft.hackclub.com/>hackcraft</a> </p>
+<p align=center>Fabric 1.21.8</p>
+
 
 ## Features:
 - Midas's touch item that turns blocks and entities into gold!
