@@ -1,12 +1,14 @@
 package sergey5588.mgtm;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import sergey5588.mgtm.custom.blockEntities.AltarCoreBlockEntity;
+import sergey5588.mgtm.custom.blocks.AltarCore;
 import sergey5588.mgtm.utils.AltarCoreCraftC2SPayload;
 
 import java.util.Arrays;
@@ -70,6 +72,12 @@ public class AltarCrafting {
 
             BlockPos blockPos = new BlockPos((int)payload.pos().x,(int)payload.pos().y,(int)payload.pos().z);
             if(context.player().getWorld().getBlockEntity(blockPos) instanceof AltarCoreBlockEntity blockEntity) {
+                BlockState blockState = context.player().getWorld().getBlockState(blockPos);
+                if(blockState.isOf(ModBlocks.ALTAR_CORE)) {
+                    if(((AltarCore)blockState.getBlock()).isValidStructure(context.player().getWorld(), blockPos)) {
+                        context.player().closeHandledScreen();
+                    }
+                }
                 process_crafting(blockEntity.getItems());
             } else {
                 context.player().closeHandledScreen();
