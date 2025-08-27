@@ -50,6 +50,6 @@ press "Magic" button to make something
 
 ### Midas' touch
 - when used on a block, it turns it into gold block.
-- when used on a creature, it applies a new status effect - statue (does not allow entities to move) 
+- when used on a creature, it applies a new status effect - statue (does not allow entities to move and when an entity with the effect is killed it drops 1 gold ingot)
 
 > All the research was done with [&udm=14](https://udm14.com/) in Google!
