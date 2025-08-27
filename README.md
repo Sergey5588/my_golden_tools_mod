@@ -20,7 +20,13 @@
 #### How to build
 First, build a base like this:  
 <img width="48" height="48" alt="altar_base" src="https://github.com/user-attachments/assets/0a19aee2-7c33-493e-818e-8560b6ef3e06" />  
-and put altar core block on top of the block of lapis lazuli, and you're done!
+and put altar core block on top of the block of lapis lazuli, and you're done!  
+you will end up with this:
+<details>
+<summary>Click to show</summary>
+<img width="1246" height="1055" alt="изображение" src="https://github.com/user-attachments/assets/bb13e2c0-0c5d-44cb-ab67-b555e017eece" />
+
+</details>
 
 #### Interactions
 right click to open a crafting menu  
@@ -28,7 +34,7 @@ press "Magic" button to make something
 
 <details>
     
-<summary>Recipes</summary> 
+<summary>Recipes</summary>
 
 - Altar core    
 
