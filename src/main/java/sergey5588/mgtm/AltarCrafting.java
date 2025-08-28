@@ -74,7 +74,7 @@ public class AltarCrafting {
             if(context.player().getWorld().getBlockEntity(blockPos) instanceof AltarCoreBlockEntity blockEntity) {
                 BlockState blockState = context.player().getWorld().getBlockState(blockPos);
                 if(blockState.isOf(ModBlocks.ALTAR_CORE)) {
-                    if(((AltarCore)blockState.getBlock()).isValidStructure(context.player().getWorld(), blockPos)) {
+                    if(!((AltarCore)blockState.getBlock()).isValidStructure(context.player().getWorld(), blockPos)) {
                         context.player().closeHandledScreen();
                     }
                 }
